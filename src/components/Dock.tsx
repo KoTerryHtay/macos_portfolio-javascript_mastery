@@ -1,10 +1,13 @@
 import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
-import { dockApps } from "@/constants";
+import { dockApps, WINDOW_CONFIG } from "@/constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import useWindowStore from "@/store/window";
 
 export default function Dock() {
+  const { openWindow, closeWindow, windows } = useWindowStore();
+
   const dockRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -57,10 +60,27 @@ export default function Dock() {
     };
   }, []);
 
-  const toggleApp = (app: { id: string; canOpen: boolean }) => {
-    //TODO Implement Open Window Logic
-    console.log("toggleApp >>>", app);
+  const toggleApp = (app: {
+    id: keyof typeof WINDOW_CONFIG;
+    canOpen: boolean;
+  }) => {
+    // console.log("toggleApp >>>", app);
+    if (!app.canOpen) return;
+
+    const window = windows[app.id];
+
+    if (!window) {
+      console.error(`Window not found for app: ${app.id}`);
+      return;
+    }
+
+    if (window.isOpen) {
+      closeWindow(app.id);
+    } else {
+      openWindow(app.id);
+    }
   };
+  console.log("windows >>>", windows);
 
   return (
     <section id="dock">
