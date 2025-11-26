@@ -18,7 +18,7 @@ function Finder() {
       return window.open(item.href, "_blank");
 
     console.log("openItem item >>>", item);
-    openWindow(`${item.fileType}${item.kind}}` as any, item);
+    openWindow(`${item.fileType}${item.kind}` as any, item);
   };
 
   const renderList = (name: string, items: Partial<locationType>[]) => (
