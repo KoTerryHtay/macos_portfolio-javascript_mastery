@@ -2,13 +2,17 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { locations } from "@/constants";
 
-type locationType = typeof locations.work;
+export type locationType =
+  | typeof locations.work
+  | typeof locations.about
+  | typeof locations.resume
+  | typeof locations.trash;
 
 const DEFAULT_LOCATION = locations.work;
 
 interface BearState {
-  activeLocations: locationType | null;
-  setActiveLocation: (location: locationType | null) => void;
+  activeLocations: Partial<locationType> | null;
+  setActiveLocation: (location: Partial<locationType> | null) => void;
   resetActiveLocation: () => void;
 }
 

@@ -7,7 +7,7 @@ interface WindowState {
   nextZIndex: number;
   openWindow: (
     windowKey: keyof typeof WINDOW_CONFIG,
-    data?: string | null
+    data?: any | null
   ) => void;
   closeWindow: (windowKey: keyof typeof WINDOW_CONFIG) => void;
   focusWindow: (windowKey: keyof typeof WINDOW_CONFIG) => void;
