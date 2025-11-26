@@ -19,8 +19,9 @@ interface BearState {
 const useLocationStore = create<BearState>()(
   immer((set) => ({
     activeLocations: DEFAULT_LOCATION,
-    setActiveLocation: (location = null) =>
+    setActiveLocation: (location) =>
       set((state) => {
+        if (location === undefined) return;
         state.activeLocations = location;
       }),
     resetActiveLocation: () =>
