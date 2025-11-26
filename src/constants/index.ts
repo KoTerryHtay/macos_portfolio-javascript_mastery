@@ -1,4 +1,8 @@
-const navLinks = [
+const navLinks: {
+  id: number;
+  name: string;
+  type: keyof typeof WINDOW_CONFIG;
+}[] = [
   {
     id: 1,
     name: "Projects",
