@@ -1,7 +1,17 @@
+import type {
+  AboutLocationInterface,
+  AllLocationsInterface,
+  ResumeLocationInterface,
+  TrashLocationInterface,
+  WindowConfigIdKeyType,
+  WindowConfigInterface,
+  WorkLocationInterface,
+} from "@/types";
+
 const navLinks: {
   id: number;
   name: string;
-  type: keyof typeof WINDOW_CONFIG;
+  type: WindowConfigIdKeyType;
 }[] = [
   {
     id: 1,
@@ -40,7 +50,7 @@ const navIcons = [
 ];
 
 const dockApps: {
-  id: keyof typeof WINDOW_CONFIG;
+  id: WindowConfigIdKeyType;
   name: string;
   icon: string;
   canOpen: boolean;
@@ -224,7 +234,7 @@ export {
   gallery,
 };
 
-const WORK_LOCATION = {
+const WORK_LOCATION: WorkLocationInterface = {
   id: 1,
   type: "work",
   name: "Work",
@@ -392,7 +402,7 @@ const WORK_LOCATION = {
   ],
 };
 
-const ABOUT_LOCATION = {
+const ABOUT_LOCATION: AboutLocationInterface = {
   id: 2,
   type: "about",
   name: "About me",
@@ -445,7 +455,7 @@ const ABOUT_LOCATION = {
   ],
 };
 
-const RESUME_LOCATION = {
+const RESUME_LOCATION: ResumeLocationInterface = {
   id: 3,
   type: "resume",
   name: "Resume",
@@ -464,7 +474,7 @@ const RESUME_LOCATION = {
   ],
 };
 
-const TRASH_LOCATION = {
+const TRASH_LOCATION: TrashLocationInterface = {
   id: 4,
   type: "trash",
   name: "Trash",
@@ -492,7 +502,7 @@ const TRASH_LOCATION = {
   ],
 };
 
-export const locations = {
+export const locations: AllLocationsInterface = {
   work: WORK_LOCATION,
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
@@ -501,51 +511,51 @@ export const locations = {
 
 const INITIAL_Z_INDEX = 1000;
 
-const WINDOW_CONFIG = {
+const WINDOW_CONFIG: WindowConfigInterface = {
   finder: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   contact: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   resume: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   safari: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   photos: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   terminal: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   txtfile: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   imgfile: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
   trash: {
     isOpen: false,
     zIndex: INITIAL_Z_INDEX,
-    data: null as string | null,
+    data: null,
   },
 };
 

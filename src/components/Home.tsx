@@ -1,5 +1,5 @@
 import { locations } from "@/constants";
-import useLocationStore from "@/store/location";
+import useLocationStore, { type LocationStore } from "@/store/location";
 import useWindowStore from "@/store/window";
 import { useGSAP } from "@gsap/react";
 import clsx from "clsx";
@@ -7,11 +7,13 @@ import { Draggable } from "gsap/Draggable";
 
 const projects = locations.work?.children ?? [];
 
+// console.log("home projects >>>", projects);
+
 function Home() {
   const { setActiveLocation } = useLocationStore();
   const { openWindow } = useWindowStore();
 
-  const handleOpenProjectFinder = (project: any) => {
+  const handleOpenProjectFinder = (project: LocationStore) => {
     setActiveLocation(project);
     openWindow("finder");
   };

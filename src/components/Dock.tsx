@@ -4,6 +4,7 @@ import { dockApps, WINDOW_CONFIG } from "@/constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import useWindowStore from "@/store/window";
+import type { WindowConfigIdKeyType } from "@/types";
 
 export default function Dock() {
   const { openWindow, closeWindow, windows } = useWindowStore();
@@ -60,10 +61,7 @@ export default function Dock() {
     };
   }, []);
 
-  const toggleApp = (app: {
-    id: keyof typeof WINDOW_CONFIG;
-    canOpen: boolean;
-  }) => {
+  const toggleApp = (app: { id: WindowConfigIdKeyType; canOpen: boolean }) => {
     // console.log("toggleApp >>>", app);
     if (!app.canOpen) return;
 
@@ -80,7 +78,7 @@ export default function Dock() {
       openWindow(app.id);
     }
   };
-  console.log("windows >>>", windows);
+  // console.log("windows >>>", windows);
 
   return (
     <section id="dock">

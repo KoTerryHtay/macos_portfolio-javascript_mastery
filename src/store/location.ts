@@ -1,18 +1,32 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { locations } from "@/constants";
+import type {
+  AboutLocationInterface,
+  AllLocationsInterface,
+  FileType,
+  Kind,
+  ResumeLocationInterface,
+  TrashLocationInterface,
+  WindowDataInterface,
+  WorkLocationInterface,
+} from "@/types";
 
-export type locationType =
-  | typeof locations.work
-  | typeof locations.about
-  | typeof locations.resume
-  | typeof locations.trash;
+export type LocationStore =
+  | WorkLocationInterface["children"][number]
+  | WorkLocationInterface
+  | AboutLocationInterface
+  | ResumeLocationInterface
+  | TrashLocationInterface;
 
-const DEFAULT_LOCATION = locations.work;
+const DEFAULT_LOCATION: LocationStore = locations.work.children[0];
 
+// Partial<locationType>
 interface BearState {
-  activeLocations: Partial<locationType> | null;
-  setActiveLocation: (location: Partial<locationType> | null) => void;
+  // Favorite :
+  // My Projects : WindowDataInterface
+  activeLocations: LocationStore;
+  setActiveLocation: (location: LocationStore) => void;
   resetActiveLocation: () => void;
 }
 

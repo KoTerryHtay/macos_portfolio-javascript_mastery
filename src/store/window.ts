@@ -1,16 +1,21 @@
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "@/constants";
+import type {
+  WindowConfigIdKeyType,
+  WindowConfigInterface,
+  WindowDataInterface,
+} from "@/types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 interface WindowState {
-  windows: typeof WINDOW_CONFIG;
+  windows: WindowConfigInterface;
   nextZIndex: number;
   openWindow: (
-    windowKey: keyof typeof WINDOW_CONFIG,
-    data?: any | null
+    windowKey: WindowConfigIdKeyType,
+    data?: WindowDataInterface | null
   ) => void;
-  closeWindow: (windowKey: keyof typeof WINDOW_CONFIG) => void;
-  focusWindow: (windowKey: keyof typeof WINDOW_CONFIG) => void;
+  closeWindow: (windowKey: WindowConfigIdKeyType) => void;
+  focusWindow: (windowKey: WindowConfigIdKeyType) => void;
 }
 
 const useWindowStore = create<WindowState>()(
