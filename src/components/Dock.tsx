@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
-import { dockApps, WINDOW_CONFIG } from "@/constants";
+import { dockApps } from "@/constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import useWindowStore from "@/store/window";

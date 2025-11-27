@@ -3,12 +3,8 @@ import { immer } from "zustand/middleware/immer";
 import { locations } from "@/constants";
 import type {
   AboutLocationInterface,
-  AllLocationsInterface,
-  FileType,
-  Kind,
   ResumeLocationInterface,
   TrashLocationInterface,
-  WindowDataInterface,
   WorkLocationInterface,
 } from "@/types";
 

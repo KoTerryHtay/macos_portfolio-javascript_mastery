@@ -25,6 +25,7 @@ function Finder() {
   const openItem = (item: WindowDataInterface) => {
     if (item.fileType === "pdf") return openWindow("resume");
     if (item.kind === "folder")
+      //! check
       return setActiveLocation(item as unknown as LocationStore);
     if (fileCheck.includes(item.fileType) && item.href)
       return window.open(item.href, "_blank");
